@@ -1,0 +1,113 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name='google-site-verification', content='jYuEfUf3ArzrGe1VmBpLtP025aHK5rEz9wFktXlCkYc')
+    title Hill Valley Club
+    meta(name='format-detection', content='telephone=no')
+    // CSS Links
+    link(rel='stylesheet', href='/includes/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/fonts.css', type='text/css')
+    // Script Links
+    script(src='/includes/bootstrap.min.js')
+    script(src='/includes/jquery-3.3.1.min.js')
+    script(src='/javascripts/main.js')
+    link(rel='stylesheet', href='/stylesheets/index.css', type='text/css')
+  body
+    link(rel='stylesheet', href='/stylesheets/navbar.css', type='text/css')
+    nav#global-nav.navbar.navbar-expand-lg.navbar-dark
+      a#home-btn.navbar-brand(href='#') Hill & Valley Club
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' class="collapse-nav")
+        span.navbar-toggler-icon
+      #navbarText.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active(onclick='scrollAbout()')
+            a#about-btn.nav-link(href='#') About Us
+          li.nav-item(onclick='scrollReservations()')
+            a#rentals-btn.nav-link(href='#') Reservations
+        ul.navbar-nav
+          li.nav-item
+            a#contact-btn.nav-link(href='contact') Contact
+        ul.navbar-nav
+          li.nav-item
+            a#contact-btn.nav-link(href='events') Events
+      #collapse-navbar
+        ul.nav-wrapper
+          li.nav-item(onclick='scrollAbout()')
+            a#about-btn.nav-link(href='#') About Us
+          li.nav-item(onclick='scrollReservations()')
+            a#rentals-btn.nav-link(href='#') Reservations
+          li.nav-item
+            a#about-btn.nav-link(href='contact') Contact
+          li.nav-item
+            a#rentals-btn.nav-link(href='events') Events
+    script(src='/javascripts/nav.js')
+    .homeImg
+      .homeText.center
+        h1.home-title Hill & Valley Club
+    main
+      .about-container
+        .about-content
+          h1.about-header.center About Us
+          .row.about-cont
+            .col-lg.width-change-column
+              img.about-image.center(src='/images/H&V Women current.gif', alt='Hill & Valley Ladies 2016')
+            .col-lg.width-change-column
+              p.about-text
+                | The Hill & Valley Club is a non-profit organization that was formed in 1910. We are a member of the General Federation of Women’s Clubs and the California Federation of Women’s Club.
+                br
+                br
+                |                 We work each year to raise money for various charities in the community as well as funding several scholarships for our local high schools and the Chabot College graduating nurses.
+                br
+                br
+                em For more information about becoming a member contact Alva Antonini
+                br
+                span.reservation-number (510) 421-0082
+      .history-container
+        .history-content
+          h1.center.history-header History
+          .history-main.center
+            img.history-picture(src='/images/H&V History.jpg', alt='Hill & Valley Ladies 1925')
+            p.history-info
+              | Hill and Valley was established when Mrs. J. Allen Park brought together women in the Hayward, Castro Valley, San Lorenzo, Fremont, Newark areas with the idea of forming a Federated Women’s Club.  Mrs. Park was certain that women could accomplish much in the Federation structure.  Federation had been started in the eastern part of the country in the 1800’s when women tried to better themselves, their families and their communities.
+              br
+              br
+              br
+              br
+              |             A group of 250 members began the Hill & Valley Women’s club in 1910 becoming a part of the Alameda and State Federations.  Deciding dues, meeting places, officers, elections and by-laws were all approved in March 1910.   They became a part of the National Federation in 1912.  Strobridge, Gading, Ruus, Smaley, Harder, Oakes, Winton, Walpert, Garin and Moreau were some of the first members of Hill & Valley Club.
+              br
+              br
+              br
+              br
+              |             Over the years Hill and Valley gave support to National and Regional areas of concern:  Red Cross, League of Nations, child labor laws, the blind individual’s white cane, Redwood Grove in Humboldt County, and much support was given to city government, education, outreach and conservation.
+              br
+              br
+              br
+              br
+              |              In the early years, Mrs. Park’s home was used for committee meetings.  Hayward historical landmark buildings were made available to the club for meager rent.  It was soon decided that a building fund would be started for a clubhouse.  Building was postponed until 1952 because of WWII.  The cottage was added in 1963.
+      hr(style='margin: 0 10% 100px 10%;')
+      .rentals-container
+        .rentals-header-container
+          h1.center.rentals-header Reservations
+        .rentals-main-content
+          img.clubhouse-img(src='/images/clubhouse.jpg', alt='Clubhouse')
+          h2.club-house-title Club House
+        .house-address-container.center
+          address(style='padding-top: 50px;')
+            | 1808 B Street
+            br
+            | 						Hayward, CA 94541
+        .house-desccription-container
+          p
+            | We provide daily, weekly and montly rentals. Our Hall is perfect for Wedding Receptions, Brithday Parties, Memorials or Weekly/Monthly Club rentals. 
+            br
+            br
+            |  We have tables and chairs available upon request. A huge Kitchen and Onside with overflow parking is available. The has a capacity of 
+            strong 225 Guests
+            br
+            br
+            |  Come join us for your next Event.
+        .make-reservation-container
+          span.make-reservation
+            | To make a reservation call Joann Silveria 
+            span.reservation-number (510) 881-9784

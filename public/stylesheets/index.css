@@ -1,0 +1,164 @@
+body,html {
+    margin: 0;
+    height: 100%;
+    font-family: "Gravity-Regular";
+}
+
+.homeImg {
+    background-image: url(../images/homepage-BG.jpg);
+    min-width: 100%;
+    min-height: 100%;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    background-attachment: fixed;
+}
+
+.home-title {
+    color: white;
+    font-size: 70px;
+	padding-top: 45vh;
+}
+
+.center {
+    text-align: center;
+
+}
+
+.about-content {
+	width: 70%;
+	margin-left: 15%;
+  max-width: 1400px;
+  text-align: center;
+}
+
+.about-main {
+	display: flex;
+	vertical-align: middle;
+}
+
+.about-header {
+	margin: 100px 0;
+}
+
+.about-image {
+	border-radius: 100px;
+  margin: 0 auto;
+}
+
+.about-text {
+  margin-top: 25px;
+  font-size: 17px;
+}
+
+
+
+.history-container {
+  padding: 100px 0;
+}
+
+.history-picture {
+  padding: 100px 0;
+}
+
+.history-info {
+  width: 60%;
+  margin-left: 20%;
+  font-size: 17px;
+}
+
+.rentals-header-container {
+	margin-bottom: 100px;
+}
+
+.rentals-main-content {
+	text-align: center;
+}
+
+.club-house-title {
+	margin: 30px 0;
+	font-family: "Gravity-Bold"
+}
+
+address {
+	font-family: "Gravity-Italic";
+	font-size: 20px;
+}
+
+.house-desccription-container {
+	padding-top: 100px;
+	width: 50%;
+	margin-left: 25%;
+	font-size: 18px;
+	text-align: center;
+
+}
+
+.make-reservation-container {
+	text-align: center;
+	margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.make-reservation {
+	font-size: 20px;
+}
+
+.reservation-number {
+	color: #2ecc71;
+	padding-bottom: 50px;
+}
+
+
+@media (max-width: 700px) {
+    
+    .home-title {
+        padding-top: 20vh;
+    }
+    
+    .homeImg {
+        min-height: 60%;
+    }
+    
+    .home-title {
+        font-size: 50px;
+    }
+    
+    .about-image,
+    .history-picture,
+    .clubhouse-img {
+        width: 90%;
+    }    
+    
+    .make-reservation-container {
+        width: 90%;
+        margin-left: 5%;
+    }
+    
+    .history-info {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 800px) {
+  .history-info {
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+	.house-desccription-container {
+		width: 70%;
+		margin-left: 15%;
+	}
+}
+
+@media only screen and (max-width: 1400px) {
+	.about-content {
+		width: 90%;
+		margin-left: 5%;
+	}
+}

@@ -1,0 +1,92 @@
+body,html {
+    margin: 0;
+    overflow: auto;
+    font-family: "Gravity-Regular";
+}
+
+.center {
+    text-align: center;
+}
+
+.return-home {
+    color: white;
+    text-decoration: none;
+    font-size: 19px;
+    padding: 5px 10px;
+    background: transparent;
+    transition: background .2s;
+}
+
+.return-home:hover {
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.15);
+}
+
+.contact-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    background: #FAFAFA;
+}
+
+.contact-content {
+  max-width: 1500px;
+  margin: auto;
+}
+
+.contact-desc-wrapper {
+    margin-top: 150px;
+}
+
+.contact-header {
+    font-family: "Gravity-Bold";
+}
+
+.contact-description {
+    margin: 50px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+ .forms-contact-wrapper {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.email-icon,
+.phone-icon {
+    width: 30%;
+}
+
+.contact-email,
+.contact-phone {
+    font-size: 23px;
+    margin-top: 30px;
+    color: #2196F3;
+}
+
+@media only screen and (max-width: 900px) {
+    .contact-description {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .email-icon {
+      margin-top: 100px;
+    }
+    
+    .contact-email {
+        padding-bottom: 50px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .email-icon,
+    .phone-icon {
+        width: 40%;
+    }
+}

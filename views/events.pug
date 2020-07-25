@@ -1,0 +1,98 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Events
+    meta(name='format-detection', content='telephone=no')
+    // CSS Links
+    link(rel='stylesheet', href='/includes/bootstrap.min.css', type='text/css')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/fonts.css', type='text/css')
+    // Script Links
+    script(src='/includes/bootstrap.min.js')
+    script(src='/includes/jquery-3.3.1.min.js')
+    script(src='/javascripts/events.js')
+    link(rel='stylesheet', href='/stylesheets/events.css', type='text/css')
+  body
+    link(rel='stylesheet', href='/stylesheets/navbar.css', type='text/css')
+    nav#global-nav.navbar.bg-dark.scrolled-nav
+      a.navbar-brand(href='/') Hill & Valley Club
+      .right
+        a.return-home(href="/") Return Home
+    main
+      .events-containers
+        .events-content
+          .container.center.events-desc-wrapper
+            h1.events-header Events
+            p.no-events.center <em>There are currently no events!</em>
+          .events-table-wrapper
+            table
+              tbody
+                tr.table-headers
+                  th Event Name
+                  th Event Date
+                  th Start Time
+                  th End Time
+                  th Event Description
+    script(type="text/javascript").
+      
+      var rawdb = "#{allEvents}"
+      var db = JSON.parse(rawdb.replace(/&quot;/g,'"').replace(/&amp;/, '&'));
+      
+      if(db.length == 0) {
+        $('.no-events').show();
+        $('table').hide();
+      } else {
+        $('.no-events').hide();
+        $('table').show();
+      }
+      
+      for(var i=0;i<db.length;i++) {
+        var startMinute;
+        if(String(db[i].startMinute).length <= 1) {
+           startMinute = "0" + db[i].startMinute
+        } else {
+          startMinute = db[i].startMinute
+        }
+        if(db[i].endMinute == undefined || db[i].endMinute == -1) {
+          $('.events-table-wrapper tbody').append('<tr><td class="event-name">' + db[i].eventName + '</td><td class="event-date">' + DateConverter(db[i].year,db[i].month,db[i].day) + '</td><td class="start-time">' + db[i].startHour + ':' + startMinute + ' ' + db[i].startAMPM  + '</td><td class="end-time">N/A</td><td class="event-desc">' + db[i].eventDesc + '</td></tr>')
+        } else {
+          var endMinute;
+        if(String(db[i].endMinute).length <= 1) {
+           endMinute = "0" + db[i].endMinute
+        } else {
+           endMinute = db[i].endMinute
+        }
+        $('.events-table-wrapper tbody').append('<tr><td class="event-name">' + db[i].eventName + '</td><td class="event-date">' + DateConverter(db[i].year,db[i].month,db[i].day) + '</td><td class="start-time">' + db[i].startHour + ':' + startMinute + ' ' + db[i].startAMPM  + '</td><td class="end-time">' + db[i].endHour + ':' + endMinute + ' ' + db[i].endAMPM  + '</td><td class="event-desc">' + db[i].eventDesc + '</td></tr>')
+        }
+        
+      }
+      
+      function DateConverter(year,month,day) {
+        if(month == "1") {
+          return "January " + day + ", " + year
+        } else if (month == "2") {
+          return "February " + day + ", " + year
+        } else if (month == "3") {
+          return "March " + day + ", " + year
+        } else if (month == "4") {
+          return "April " + day + ", " + year
+        } else if (month == "5") {
+          return "May " + day + ", " + year
+        } else if (month == "6") {
+          return "June " + day + ", " + year
+        } else if (month == "7") {
+          return "July " + day + ", " + year
+        } else if (month == "8") {
+          return "August " + day + ", " + year
+        } else if (month == "9") {
+          return "September " + day + ", " + year
+        } else if (month == "10") {
+          return "October " + day + ", " + year
+        } else if (month == "11") {
+          return "November " + day + ", " + year
+        } else if (month == "12") {
+          return "December " + day + ", " + year
+        }
+      }
+

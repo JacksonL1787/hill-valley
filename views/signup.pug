@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Hill Valley Club
+    meta(name='format-detection', content='telephone=no')
+    // CSS Links
+    link(rel='stylesheet', href='/includes/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/fonts.css', type='text/css')
+    // Script Links
+    script(src='/includes/bootstrap.min.js')
+    script(src='/includes/jquery-3.3.1.min.js')
+    
+    link(rel='stylesheet', href='/stylesheets/login.css', type='text/css')
+  body
+    .content-wrapper
+        form(class="login-form" method="post" action="/register")
+            input(type="text" id="login-email" placeholder="Email" class="form-input" name="email" autocomplete="off")
+            br
+            input(type="password" id="login-password" placeholder="Password" name="password" class="form-input" autocomplete="off")
+            br
+            input(type="submit" id="login-btn" name="login" value="Signup")
+    
+    script(src='/javascripts/login.js')

@@ -1,0 +1,86 @@
+doctype html
+html
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		title Hill Valley Club
+		meta(name='format-detection', content='telephone=no')
+		// CSS Links
+		link(rel='stylesheet', href='/stylesheets/fonts.css', type='text/css')
+		link(rel='stylesheet', href='/stylesheets/event-editor.css', type='text/css')
+	body
+		form(method="POST")
+			.navbar
+				a(href="/events/dashboard" id="cancel-btn") Cancel
+				h1
+				if(event)
+					input(type="submit" id="done-btn" value="Done")
+				else
+					input(type="submit" id="create-btn" value="Create" formaction="/event/create")
+				
+			.form-content
+				label <b>Event Name</b>
+				input(name="eventName" type="text")
+				label <b>Event Date</b> <em>(mm/dd/yyyy)</em>
+				input(name="eventDate" type="text")
+				label <b>Start Time</b> <em>(hh:mm)</em>
+				input(name="startTime" type="text")
+				.ampm-wrap
+					select.ampm(name="startampm")
+						option(value="AM") AM
+						option(value="PM") PM
+				label <b>End Time</b> <em>(hh:mm)</em>
+				input(name="endTime" type="text")
+				.ampm-wrap
+					select.ampm(name="endampm")
+						option(value="AM") AM
+						option(value="PM") PM
+					// img.dropdown(src="/images/dropdown.svg")
+				label <b>Event Description</b>
+				textarea(name="eventDesc" data-gramm_editor="false")
+					
+					
+					
+		script(type='text/javascript', src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js')
+		script(type='text/javascript').
+			var event = #{event}
+			if(event) {
+				var rawEventObj = "#{eventObj}"
+				var eventObj = JSON.parse(rawEventObj.replace(/&quot;/g,'"'));
+				console.log(eventObj);
+				var startMinute;
+				var endMinute;
+				if(String(eventObj.startMinute).length <= 1) {
+				   startMinute = "0" + eventObj.startMinute
+				} else {
+				  minute = eventObj.minute
+				}
+				if(String(eventObj.endMinute).length <= 1) {
+				   endMinute = "0" + eventObj.endMinute
+				} else {
+				  endMinute = eventObj.endMinute
+				}
+				$('#done-btn').attr('formaction', '/event/edit/' + eventObj.eventID)
+				$('input[name="eventName"]').val(eventObj.eventName);
+				$('input[name="eventDate"]').val(eventObj.month+"/"+eventObj.day+"/"+eventObj.year);
+				$('input[name="startTime"]').val(eventObj.startHour+":"+startMinute);
+				if(eventObj.endMinute == undefined || eventObj.endMinute == -1) {
+					$('input[name="endTime"]').val("")
+				} else {
+					$('input[name="endTime"]').val(eventObj.endHour+":"+endMinute);
+				}
+				
+				$('textarea[name="eventDesc"]').val(eventObj.eventDesc);
+				if(eventObj.startAMPM == "AM") {
+					$('select[name="startampm"] option[value="AM"]').prop('selected', true);
+				} else if (eventObj.startAMPM == "PM") {
+					$('select[name="startampm"] option[value="PM"]').prop('selected', true);
+				}
+				if(eventObj.endAMPM == "AM") {
+					$('select[name="endampm"] option[value="AM"]').prop('selected', true);
+				} else if (eventObj.endAMPM == "PM") {
+					$('select[name="endampm"] option[value="PM"]').prop('selected', true);
+				}
+				$('.navbar h1').text('Edit Event');
+			} else {
+				$('.navbar h1').text('Create Event');
+			}

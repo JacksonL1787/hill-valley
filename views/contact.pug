@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Hill Valley Club
+    meta(name='format-detection', content='telephone=no')
+    // CSS Links
+    link(rel='stylesheet', href='/includes/bootstrap.min.css', type='text/css')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/fonts.css', type='text/css')
+    // Script Links
+    script(src='/includes/bootstrap.min.js')
+    script(src='/includes/jquery-3.3.1.min.js')
+    link(rel='stylesheet', href='/stylesheets/contact.css', type='text/css')
+  body
+    link(rel='stylesheet', href='/stylesheets/navbar.css', type='text/css')
+    nav#global-nav.navbar.bg-dark.scrolled-nav
+      a.navbar-brand(href='/') Hill & Valley Club
+      .right
+        a.return-home(href="/") Return Home
+    main
+      .contact-container
+        .contact-content
+          .container.center.contact-desc-wrapper
+            h1.contact-header Contact Us
+            p.contact-description
+              | Contact us if you have any questions about our club or how the reservations at our club house work.
+          .row.forms-contact-wrapper.center
+            .col-12.col-md-6.order-1
+              img(class="phone-icon" src="/images/call-answer.svg")
+              h2.contact-phone
+                | (510) 881-9784
+            .col-12.col-md-6.order-4.order-md-2
+              img(class="email-icon" src="/images/close-envelope.svg")
+              h2.contact-email
+                a(href='mailto:hillvalleyclub@gmail.com') hillvalleyclub@gmail.com

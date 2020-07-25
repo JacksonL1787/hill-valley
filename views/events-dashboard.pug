@@ -1,0 +1,76 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Hill Valley Club
+    meta(name='format-detection', content='telephone=no')
+    // CSS Links
+    link(href='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', media='screen', href='http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='/stylesheets/fonts.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/dashboard.css', type='text/css')
+  body
+    .dashboard-modal-wrap
+      .dashboard-modal
+        .dashboard-modal-content
+          form(method="post")
+            .close-modal
+            h2.title Delete Event
+            p.desc By clicking on the delete button in the bottom right corner you are confirming the deletion of the event: <b>(Event Name)</b>.
+            input(type="submit" value="Delete")
+    .navbar
+      a(href="/logout" id="sign-out-btn") Sign Out
+      h1 Dashboard
+        
+      .dashboard-content
+        .create-event-wrap
+          .create-event-box
+            img(src="/images/add.svg")
+          h1.events-title Events
+          p.no-events <em>There are currently no events!</em>
+          .events-wrap
+        
+    
+    script(type='text/javascript', src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js')
+    script(type='text/javascript', src='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js')
+    script(type='text/javascript', src='http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js')
+    script(type='text/javascript', src='http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js')
+    script(src='/javascripts/dashboard.js')
+    script(type="text/javascript").
+      var rawdb = "#{allEvents}"
+      var db = JSON.parse(rawdb.replace(/&quot;/g,'"').replace(/&amp;/, '&'));
+      
+      if(db.length == 0) {
+        $('.no-events').show();
+      } else {
+        $('.no-events').hide();
+      }
+      
+      for(var i=0;i<db.length;i++) {
+        var startMinute;
+        if(String(db[i].startMinute).length <= 1) {
+           startMinute = "0" + db[i].startMinute
+        } else {
+          startMinute = db[i].startMinute
+        }
+        if(db[i].endMinute == undefined || db[i].endMinute == -1) {
+          $('.events-wrap').append('<div class="event-card" id="'+db[i].eventID+'"><span class="event-name">'+db[i].eventName+'</span><span class="event-date">'+db[i].month+'/'+db[i].day+'/'+db[i].year+'</span><span class="event-time">'+db[i].startHour+':'+startMinute+' '+db[i].startAMPM+'</span><div class="function-btn-wrap"><a class="edit-btn" href="/edit/event/'+db[i].eventID+'">Edit Event</a><a class="delete-btn">Delete</a></div></div>')
+        } else {
+          var endMinute;
+          if(String(db[i].endMinute).length <= 1) {
+             endMinute = "0" + db[i].endMinute
+          } else {
+             endMinute = db[i].endMinute
+          }
+          $('.events-wrap').append('<div class="event-card" id="'+db[i].eventID+'"><span class="event-name">'+db[i].eventName+'</span><span class="event-date">'+db[i].month+'/'+db[i].day+'/'+db[i].year+'</span><span class="event-time">'+db[i].startHour+':'+startMinute+' '+db[i].startAMPM+' to '+ db[i].endHour+':'+endMinute+' '+db[i].endAMPM+'</span><div class="function-btn-wrap"><a class="edit-btn" href="/edit/event/'+db[i].eventID+'">Edit Event</a><a class="delete-btn">Delete</a></div></div>')
+        }
+      }
+      
+      $('.delete-btn').click(function() {
+        $('.dashboard-modal-wrap form input[type="submit"]').attr('formaction', '/event/delete/' + $(this).parents('.function-btn-wrap').parents('.event-card').attr('id'))
+        $('.dashboard-modal-wrap .desc').html('By clicking on the delete button in the bottom right corner you are confirming the deletion of the event:<br><b>' + $(this).parents('.function-btn-wrap').siblings('.event-name').text() + '</b>')
+        $('.dashboard-modal-wrap').show();
+      })
+      $('.close-modal').click(function() {
+        $('.dashboard-modal-wrap').hide();
+      });
